@@ -47,23 +47,34 @@
 
              <div class="card darken-1" style="border-radius: 5px;">
                <div class="card-content">
-                 <span class="card-title left">City Name</span>
+                 <span class="card-title left"> {{ weatherData.city }} </span>
                  <span class="right">
-                  <img src="https://cdn.glitch.com/6e8889e5-7a72-48f0-a061-863548450de5%2F10n.png?1499366021399">
+                  <img ng-src="{{ weatherData.temperatere.icon }}">
                  </span>
                </div>
 
                <div class="" style="padding: 16px 24px;padding-bottom: 0;">
-                  <span>Country</span>
+                  <span>{{ weatherData.country }}</span>
                </div>
 
                <div class="card-content" style="padding-top: 10;">
-                  <span class="temperature">29&#176;C</span>
+                  <span class="temperature">{{ temperatere.value }}&#176;{{temperatere.unit}}</span>
                </div>
              </div>
 
+             <div class="card-content center">
+                <a class="btn-floating btn-large waves-effect waves-light red" ng-click="switch()">C</a>
+             </div>
+
             </div>
+
          </div>
+
+    <span ng-show="currentBackground" class="bg-author ng-hide">
+      Image credit @ <a href="https://www.flickr.com/photos/{{currentBackground.author}}" target="_blank">
+      {{currentBackground.author}}</a>
+    </span>
+
     </section>
    </body>
 </html>
