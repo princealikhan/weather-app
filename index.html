@@ -15,8 +15,8 @@
         }
       </style>
    </head>
-   <body ng-app="weatherApp">
-    <section class="container" ng-controller="appController">
+   <body ng-app="weatherApp" ng-controller="appController">
+    <section class="container">
  
         <div class="row valign-wrapper ng-hide" ng-show="ready == false">
             <!-- Card -->
@@ -69,15 +69,13 @@
             </div>
 
          </div>
-
+    </section>
     <span ng-show="currentBackground" class="bg-author ng-hide">
       Image credit @ <a href="https://www.flickr.com/photos/{{currentBackground.author}}" target="_blank">
       {{currentBackground.author}}</a>
     </span>
-
-    </section>
    </body>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script>
 
       var backgroundImages = {
