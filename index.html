@@ -120,6 +120,75 @@
         $scope.longitude;
         $scope.temperatere = {};
 
+        $scope.getLocationWeather = function (latitude,longitude) {
+
+          var baseUrl = "https://fcc-weather-api.glitch.me/api/current?lat=" + latitude + "&lon=" + longitude;
+          $http({
+            cache: false,
+            method: 'GET',
+            url: baseUrl,
+          }).then(function successCallback(response) {
+            $scope.formatData(response.data);
+          }, function errorCallback(response) {
+          });
+
+        }
+
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function (position) {
+            $scope.getLocationWeather(position.coords.latitude, position.coords.longitude);
+          });
+        } else {
+          alert("Oops we are not able to get your location");
+        }
+
+        $scope.formatData = function (data) {
+          $scope.weatherData.city = data.name;
+          $scope.weatherData.country = data.sys.country;
+          $scope.weatherData.weather = data.main;
+          $scope.weatherData.temperatere = data.weather[data.weather.length - 1];
+          $scope.temperatere = { 
+            "unit" : "C",
+            "value": (Math.round($scope.weatherData.weather.temp))
+          };
+
+          $scope.changeBackground($scope.weatherData.temperatere.main);
+
+          $scope.ready = true;
+        }
+
+        $scope.switch = function(){
+          if($scope.temperatere){
+            console.log($scope.temperatere.unit)
+            if ($scope.temperatere.unit == "C") {
+              $scope.temperatere = { 
+                "unit" : "F",
+                "value": Math.round($scope.temperatere.value * 9 / 5 + 32)
+              };
+            } else {
+              $scope.temperatere = { 
+                "unit" : "C",
+                "value": Math.round(($scope.temperatere.value - 32) * 5/9)
+              };
+          }
+          }else{
+            return false;
+          }
+        }
+
+      $scope.changeBackground = function(weatherType){
+
+        if(weatherType) {
+          var condition = weatherType.toLowerCase()
+
+          if(backgroundImages.hasOwnProperty(condition)){
+              $scope.currentBackground =  backgroundImages[condition];
+              document.body.style.backgroundImage = "url(" + $scope.currentBackground.url + ")"; 
+          }
+        }
+
+      }
+
     });
   </script>
 </html>
