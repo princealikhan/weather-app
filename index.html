@@ -15,6 +15,32 @@
         }
       </style>
    </head>
+   <body ng-app="weatherApp">
+    <section class="container" ng-controller="appController">
+ 
+        <div class="row valign-wrapper ng-hide" ng-show="ready == false">
+            <!-- Card -->
+
+            <div class="col m4 offset-m4 valign">
+              <div class="card darken-1" style="border-radius: 5px;">
+               
+               <div class="card-content center" style="padding-top: 10;">
+                  <span class="temperature">
+                    <i class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
+                  </span>
+               </div>
+
+                <div class="card-content center" style="padding-top: 10;">
+                  Please give <i class="fa fa-map-marker" aria-hidden="true"></i> access
+               </div>
+
+              </div>
+            </div>
+
+         </div>
+
+
+         <div class="row valign-wrapper ng-hide" ng-show="ready">
             <!-- Card -->
 
             <div class="col m4 offset-m4 valign">
