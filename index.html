@@ -109,6 +109,16 @@
 
     var app = angular.module('weatherApp', []);
       app.controller('appController', function($scope,$http) {
+        
+        $scope.ready = false;
+        $scope.weatherData = {};
+        $scope.currentBackground = {};
+        /*
+        * Co-ordinates 
+        **/
+        $scope.latitude;
+        $scope.longitude;
+        $scope.temperatere = {};
 
     });
   </script>
